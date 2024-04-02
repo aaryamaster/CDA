@@ -1,18 +1,11 @@
-# Use a base image with Python installed
-FROM python:3.9
+FROM python
 
-# Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy requirements file
-COPY requirements.txt .
+COPY . /usr/src/app/
 
-# Install dependencies
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN  pip install --verbose -r requirements.txt
 
-# Copy the rest of your application code
-COPY . .
+RUN echo $PYTHONPATH
 
-# Command to run the application
-CMD ["python", "your_script.py"]
+CMD ["python", "src/app.py"]
