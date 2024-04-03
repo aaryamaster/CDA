@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./CDA_FILES/src/main/python"
+    ]
+}
