@@ -29,10 +29,10 @@ jobs:
           images: aaryamaster/cda
 
       - name: Build Docker image
-        run: docker build --file ./CDA_FILES/Dockerfile -t cda-app ./CDA_FILES
+        run: docker build --file ./CDA_FILES/Dockerfile -t aaryamaster/cda/cda-app ./CDA_FILES
 
       - name: Push
-        run: docker push cda-app
+        run: docker push aaryamaster/cda/cda-app
   on-failure:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
