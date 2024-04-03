@@ -19,7 +19,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
-          username: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          username: ${{ secrets.DOCKHUB_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
@@ -30,6 +30,9 @@ jobs:
 
       - name: Build Docker image
         run: docker build --file ./CDA_FILES/Dockerfile -t cda-app ./CDA_FILES
+
+      - name: Push
+        run: docker push aaryamaster/cda:${{steps.date.outputs.date}}
 
   on-failure:
     runs-on: ubuntu-latest
