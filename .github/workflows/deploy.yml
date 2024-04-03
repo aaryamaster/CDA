@@ -32,7 +32,7 @@ jobs:
         run: docker build --file ./CDA_FILES/Dockerfile -t cda-app ./CDA_FILES
 
       - name: Push
-        run: docker push aaryamaster/cda:${{steps.date.outputs.date}}
+        run: docker push aaryamaster/cda
 
   on-failure:
     runs-on: ubuntu-latest
