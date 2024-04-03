@@ -1,0 +1,31 @@
+name: Python CI with pytest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          pip install -r .github/workflows/requirements.txt
+          pip install pytest
+
+      - name: Get directory
+        run: ls
+
+      - name: Run tests with pytest
+        run: pytest -v CDA_FILES/src/test/python/programmingtheiot/part01/integration/app/ConstrainedDeviceAppTest.py
