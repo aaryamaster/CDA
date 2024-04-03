@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd /Users/aaryamaster/Files/Software\ Eng\ Files/Software\ Dev\ Methods\ \&\ Tools/Project/CDA/CDA_FILES/
+          cd CDA/CDA_FILES
           pip install -r requirements.txt
           pip install --no-cache-dir gpiozero
           apt-get update && apt-get install -y git
