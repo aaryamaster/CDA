@@ -29,3 +29,6 @@ jobs:
 
       - name: Run tests with pytest
         run: pytest -v CDA_FILES/src/test/python/programmingtheiot/part01/integration/app/ConstrainedDeviceAppTest.py
+
+      - name: Build Docker image
+        run: docker build --file ./CDA_FILES/Dockerfile -t cda-app ./CDA_FILES
