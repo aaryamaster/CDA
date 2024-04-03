@@ -1,4 +1,4 @@
-name: Python CI with pytest and Docker
+name: Python CI with pytest
 
 on:
   push:
@@ -21,18 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd CDA/CDA_FILES
           pip install -r requirements.txt
-          pip install --no-cache-dir gpiozero
-          apt-get update && apt-get install -y git
-          git clone https://github.com/RPi-Distro/RTIMULib.git
-          cd RTIMULib/Linux/python && python setup.py install
+          pip install pytest
 
       - name: Run tests with pytest
-        run: pytest ConstrainedDeviceAppTest.py
-
-      - name: Build Docker image
-        run: docker build -t my-python-app .
-
-      - name: Run Docker container
-        run: docker run my-python-app
+        run: pytest -v tests/ConstrainedDeviceAppTest.py
