@@ -1,4 +1,4 @@
-name: Python CI with pytest and Docker
+name: Python CI with pytest
 
 on:
   push:
@@ -20,41 +20,7 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install --no-cache-dir gpiozero
+        run: pip install -r requirements.txt
 
       - name: Run tests with pytest
         run: pytest
-
-      - name: Build Docker image
-        run: docker build -t my-python-app .
-      
-      - name: Run Docker container
-        run: docker run my-python-app
-
-      - name: Set up Python 3.x for Docker
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-
-      - name: Install dependencies for Docker
-        run: |
-          pip install --verbose -r requirements.txt
-          pip install --no-cache-dir gpiozero
-
-      - name: Install RTIMU for Docker
-        run: |
-          apt-get update && apt-get install -y git
-          git clone https://github.com/RPi-Distro/RTIMULib.git
-          cd RTIMULib/Linux/python && python setup.py install
-
-      - name: Set PYTHONPATH for Docker
-        run: echo 'PYTHONPATH="${PYTHONPATH}:/usr/src/app/src:/usr/src/app/src/stubs"' >> ~/.bashrc
-
-      - name: Display PYTHONPATH for Docker
-        run: echo $PYTHONPATH
-
-      - name: Run Python application
-        run: python src/app.py
-
