@@ -24,6 +24,8 @@ jobs:
           pip install -r .github/workflows/requirements.txt
           pip install pytest
 
+      - name: Get directory
+        run: ls
+
       - name: Run tests with pytest
         run: pytest -v tests/ConstrainedDeviceAppTest.py
-
