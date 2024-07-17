@@ -32,3 +32,4 @@ jobs:
 
       - name: Build Docker image
         run: docker build --file ./CDA_FILES/Dockerfile -t cda-app ./CDA_FILES
+          
